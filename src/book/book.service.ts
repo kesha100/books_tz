@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '../../prisma/prisma.service';
+import { PrismaService } from '../prisma/prisma.service';
 import { Book } from './entities/book.entity';
 
 @Injectable()
@@ -16,7 +16,11 @@ export class BookService {
     });
   }
 
-  async create(title: string, author: string, publicationDate: Date): Promise<Book> {
+  async create(
+    title: string,
+    author: string,
+    publicationDate: Date,
+  ): Promise<Book> {
     return this.prisma.book.create({
       data: {
         title,
@@ -26,7 +30,12 @@ export class BookService {
     });
   }
 
-  async update(id: number, title: string, author: string, publicationDate: Date): Promise<Book> {
+  async update(
+    id: number,
+    title: string,
+    author: string,
+    publicationDate: Date,
+  ): Promise<Book> {
     return this.prisma.book.update({
       where: { id },
       data: {

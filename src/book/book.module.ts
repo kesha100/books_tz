@@ -1,7 +1,7 @@
 // src/book/book.module.ts
 
 import { Module } from '@nestjs/common';
-import { PrismaModule } from '../../prisma/prisma.module';
+import { PrismaModule } from '../prisma/prisma.module';
 import { BookService } from './book.service';
 import { BookController } from './book.controller';
 

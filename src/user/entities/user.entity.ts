@@ -1,13 +1,28 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+// src/users/entities/user.entity.ts
+import { ApiProperty } from '@nestjs/swagger';
+import { User } from '@prisma/client';
+import { Exclude } from 'class-transformer';
 
-@Entity('users')
-export class User {
-  @PrimaryGeneratedColumn()
+export class UserEntity implements User {
+  constructor(partial: Partial<UserEntity>) {
+    Object.assign(this, partial);
+  }
+
+  @ApiProperty()
   id: number;
 
-  @Column({ unique: true })
+  @ApiProperty()
+  createdAt: Date;
+
+  @ApiProperty()
+  updatedAt: Date;
+
+  @ApiProperty()
+  name: string;
+
+  @ApiProperty()
   email: string;
 
-  @Column()
+  @Exclude()
   password: string;
 }
